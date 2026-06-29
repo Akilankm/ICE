@@ -1,0 +1,6 @@
+coding:
+  mode: product_bulk_with_feature_fallback
+  max_parallel_products: 2
+  max_parallel_features: 4
+  fail_product_when_pg_missing: true
+  preserve_evidence_audit: true
