@@ -1,0 +1,28 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: ice_full_run
+display_name: ICE | Full Non-linear Integrated Run
+type: command
+inputs:
+  input_csv:
+    type: uri_file
+  pg_feature_input_csv:
+    type: uri_file
+  config_file:
+    type: uri_file
+    optional: true
+  mode:
+    type: string
+    default: manager_validation
+outputs:
+  output_root:
+    type: uri_folder
+code: ../..
+environment: azureml:ice-integrated-env@latest
+command: >-
+  pdm install &&
+  pdm run ice run
+  --input ${{inputs.input_csv}}
+  --pg-feature-input ${{inputs.pg_feature_input_csv}}
+  --output-root ${{outputs.output_root}}
+  --mode ${{inputs.mode}}
+  $[[--config ${{inputs.config_file}}]]

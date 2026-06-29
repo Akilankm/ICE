@@ -1,0 +1,6 @@
+scrape:
+  engine: crawl4ai
+  output_subdir: scrape/scraped
+  retain_screenshot_fallback: true
+  retain_unverified_images: true
+  block_review_when_no_real_scrape_evidence: true

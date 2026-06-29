@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: ice_normalize_input
+display_name: ICE | 01 | Normalize Input
+type: command
+inputs:
+  input_csv:
+    type: uri_file
+  config_file:
+    type: uri_file
+    optional: true
+outputs:
+  output_root:
+    type: uri_folder
+code: ../..
+environment: azureml:ice-integrated-env@latest
+command: >-
+  pdm run ice normalize
+  --input ${{inputs.input_csv}}
+  --output-root ${{outputs.output_root}}
+  $[[--config ${{inputs.config_file}}]]

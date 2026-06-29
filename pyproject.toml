@@ -1,0 +1,42 @@
+[project]
+name = "ice-integrated-codebase-engine"
+version = "0.1.0"
+description = "Integrated non-linear product evidence and coding harness connecting URL discovery, scraping, and product coding tools."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+authors = [{ name = "Akilankm" }]
+dependencies = [
+  "pandas>=2.0.0",
+  "pydantic>=2.7.0",
+  "typer>=0.12.0",
+  "rich>=13.7.0",
+  "loguru>=0.7.2",
+  "python-dotenv>=1.0.1",
+  "pyyaml>=6.0.1",
+  "product-evidence-harness @ git+https://github.com/Akilankm/web_search_tool.git@master",
+  "product-scraping-agent @ git+https://github.com/Akilankm/product_scrape_tool.git@master",
+  "product-coding-tool @ git+https://github.com/Akilankm/product_coding_tool.git@master",
+]
+
+[project.scripts]
+ice = "ice.cli:app"
+ice-run = "ice.cli:run"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "ruff>=0.5.0",
+  "mypy>=1.10.0",
+  "ipykernel>=6.29.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
