@@ -1,0 +1,6 @@
+search:
+  provider: serpapi
+  max_organic_calls_per_product: 2
+  max_ai_mode_calls_per_product: 2
+  require_country_code: true
+  require_main_text: true
