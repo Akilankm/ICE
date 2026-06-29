@@ -1,0 +1,34 @@
+run:
+  mode: manager_validation
+  max_products: null
+  resume: true
+
+paths:
+  search_output_dir: search
+  scrape_output_dir: scrape
+  coding_output_dir: coding
+  routing_output_dir: routing
+
+budgets:
+  poc_fast:
+    max_candidates_to_scrape: 1
+    max_repair_rounds: 0
+  manager_validation:
+    max_candidates_to_scrape: 2
+    max_repair_rounds: 1
+  production_audit:
+    max_candidates_to_scrape: 3
+    max_repair_rounds: 2
+
+quality:
+  high_confidence_threshold: 0.85
+  medium_confidence_threshold: 0.60
+  minimum_scrape_quality_score: 0.55
+  allow_text_only_coding: true
+  require_images_for_visual_features: true
+
+routing:
+  prefer_verified_exact_url: true
+  allow_same_country_fallback: true
+  allow_global_fallback: true
+  stop_on_identity_conflict: true
